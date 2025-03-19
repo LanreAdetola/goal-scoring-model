@@ -3,12 +3,16 @@ A machine learning model for predicting player goal-scoring probabilities in foo
 
 A data-driven approach to predicting whether Tolu Arokodare will score in a given match using Logistic Regression and Expected Goals (xG). The model analyzes match statistics such as shots, xG, key passes, and venue to improve goal prediction accuracy.
 
-🚀 Model Performance Review
-Your Logistic Regression model achieved 83% accuracy,
-F1-score of 0.83 for both scoring and non-scoring predictions.
+📊 Key Takeaways from Your Model
+Overall Accuracy → 91.67% ✅
 
-🔍 Breakdown of Results
-Accuracy: 83% → The model correctly predicts whether the player will score in 83% of cases.
-Precision (0.83 for both classes) → When the model predicts a goal (1), it's correct 83% of the time.
-Recall (0.83 for both classes) → The model correctly identifies 83% of actual goals.
-Balanced Classes → Equal support (6 games each) in the test set means no imbalance issues.
+Your model correctly predicted whether the player would score or not in ~92% of test cases.
+Class 0 (No Goal Scored)
+
+Precision: 1.00 → Every time the model predicted "No Goal," it was always correct.
+Recall: 0.83 → Some instances where the player didn’t score were missed.
+Class 1 (Goal Scored)
+
+Precision: 0.86 → When the model predicted "Goal Scored," it was correct 86% of the time.
+Recall: 1.00 → It caught all instances where the player actually scored.
+Balanced Performance → Both Precision & Recall are strong across both classes, meaning the model is neither too aggressive nor too conservative in predictions. ✅
