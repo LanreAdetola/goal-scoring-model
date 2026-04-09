@@ -37,6 +37,20 @@ pip install -r requirements.txt
 jupyter notebook stats.ipynb
 ```
 
+## Results
+
+| Model | Mean CV Accuracy |
+|-------|-----------------|
+| **Logistic Regression** | **87.7%** |
+| Random Forest | 85.0% |
+| SVM (RBF) | 84.0% |
+| Gradient Boosting | 82.3% |
+| KNN (k=5) | 80.3% |
+
+- **Leave-One-Out CV accuracy (Logistic Regression): 90.0%** (27/30 correct predictions)
+- Pre-match only model (venue + opponent quality): 56.7% — barely above random chance, showing in-match stats are essential
+- Logistic Regression was the best performer with the lowest variance across folds
+
 ## Limitations
 
 - 30-match sample from a single season and single player — results may not generalise
