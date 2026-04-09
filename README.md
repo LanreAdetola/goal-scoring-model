@@ -1,18 +1,48 @@
-# goal-scoring-model
-A machine learning model for predicting player goal-scoring probabilities in football matches, using statistical analysis and logistic regression.
+# Goal-Scoring Prediction Model
 
-A data-driven approach to predicting whether Tolu Arokodare will score in a given match using Logistic Regression and Expected Goals (xG). The model analyzes match statistics such as shots, xG, key passes, and venue to improve goal prediction accuracy.
+A machine learning project that classifies whether **Tolu Arokodare** scored in a given Belgian Pro League match during the 2024/25 season, using match statistics and expected goals (xG).
 
-📊 Key Takeaways from Your Model
-Overall Accuracy → 91.67% ✅
+## Key Findings
 
-Your model correctly predicted whether the player would score or not in ~92% of test cases.
-Class 0 (No Goal Scored)
+- **xG and Shots on Target** are the strongest predictors of goal-scoring
+- Arokodare massively **overperformed his xG** (17 goals vs ~8 xG) — a sign of elite finishing
+- A **pre-match only model** (venue + opponent quality) performs significantly worse, confirming that in-match stats drive the model
+- Multiple models compared using cross-validation suited to the small sample size (30 games)
 
-Precision: 1.00 → Every time the model predicted "No Goal," it was always correct.
-Recall: 0.83 → Some instances where the player didn’t score were missed.
-Class 1 (Goal Scored)
+## Dataset
 
-Precision: 0.86 → When the model predicted "Goal Scored," it was correct 86% of the time.
-Recall: 1.00 → It caught all instances where the player actually scored.
-Balanced Performance → Both Precision & Recall are strong across both classes, meaning the model is neither too aggressive nor too conservative in predictions. ✅
+| Feature | Description |
+|---------|-------------|
+| Venue | Home or Away |
+| Shots / Shots on Target | Attacking volume |
+| xG | Expected Goals from chance quality |
+| Key Passes | Chances created |
+| Minutes | Playing time |
+| Opp_GA_per_game | Opponent defensive quality |
+
+30 matches from the 2024/25 Belgian Pro League season.
+
+## Methodology
+
+- **Binary classification:** Did Arokodare score (1) or not (0)?
+- **5 models compared:** Logistic Regression, KNN, SVM, Random Forest, Gradient Boosting
+- **Cross-validation:** Leave-One-Out CV and Repeated Stratified 5-Fold CV (no single train/test split on small data)
+- **Feature engineering:** Shot Accuracy, xG per Shot
+- **Honest evaluation:** Pre-match vs full-model comparison to address data leakage
+
+## How to Run
+
+```bash
+pip install -r requirements.txt
+jupyter notebook stats.ipynb
+```
+
+## Limitations
+
+- 30-match sample from a single season and single player — results may not generalise
+- Most features are in-match statistics, making this an explanatory model rather than a true pre-match predictor
+- No temporal validation (e.g., using first half of season to predict second half)
+
+## Built With
+
+Python, pandas, scikit-learn, matplotlib, seaborn
